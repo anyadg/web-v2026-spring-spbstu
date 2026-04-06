@@ -6,14 +6,6 @@ for (const key in recipesJson) {
 
 renderRecipes();
 
-window.addEventListener('storage', (event) => {
-    if (event.key === 'recipes') {
-        recipes = JSON.parse(event.newValue) || [];
-        renderRecipes();
-    }
-});
-
-
 // Рендеринг рецептов на странице
 function renderRecipes() {
     const container = document.querySelector('.recipes');
