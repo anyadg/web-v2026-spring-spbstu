@@ -1,4 +1,4 @@
-let map = {
+const map = {
     '01':{signs:['козерог','водолей'], num: 20},
     '02':{signs:['водолей','рыбы'], num: 20},
     '03':{signs:['рыбы','овен'], num: 20},
@@ -19,12 +19,12 @@ function zodiacsign(data) {
     let number = +num;
     let month = map[mon];
     if (number <= month.num){
-        console.log(month.signs[0])
+        return month.signs[0]
     } else {
-        console.log(month.signs[1])
+        return month.signs[1]
     }
 }
 
-zodiacsign('06.01.2007');
-zodiacsign('20.02.1997');
-zodiacsign('03.08.2012');
+console.log(zodiacsign('06.01.2007'));
+console.log(zodiacsign('20.02.1997'));
+console.log(zodiacsign('03.08.2012'));
