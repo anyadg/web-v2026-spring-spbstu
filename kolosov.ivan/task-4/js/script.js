@@ -110,7 +110,7 @@ document.getElementById('addUser').addEventListener('click', (event) => {
     userID.value = '';
     userName.value = '';
 
-    if (typeof users.findIndex(user => user.id === id) === -1) {
+    if (users.findIndex(user => user.id === id) === -1) {
         addUser(id, name).then( () => {   
             renderUsers();
         }).catch(error => {
