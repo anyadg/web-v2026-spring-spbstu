@@ -11,7 +11,8 @@ main {
 }
 
 .user {
-    background-color: red;
+    background-color: #597BC0;
+    border-radius: 30px;
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -23,4 +24,12 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+}
+
+button {
+    border-radius: 10px;
+}
+
+input {
+    border-radius: 10px;
 }
