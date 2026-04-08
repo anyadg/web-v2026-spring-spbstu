@@ -52,12 +52,4 @@ export class Event {
         this.participants.splice(nameIndex,1);
     }
 
-    showEvent() {
-        return {
-            id: this.id,
-            title: this.title,
-            participants: this.participants,
-            date: this.date,
-        }
-    }
 }
