@@ -1,22 +1,32 @@
 function convertBase(num, fromBase, toBase) {
 
+    // Проверка на число вводимых оснований систем счисления
+    if (isNaN(fromBase)) {
+        throw new TypeError(`Ошибка в исходной системе счисления, ожидалось число, получено "${fromBase}"`);
+    }
+    else if (isNaN(toBase)) {
+        throw new TypeError(`Ошибка в конечной системе счисления, ожидалось число, получено "${toBase}"`);
+    }
+
+    // Проверка диапазона вводимых оснований систем счисления
     if (fromBase > 36 || toBase > 36 || fromBase < 2 || toBase < 2) {
-        return "Система счисления должна быть в диапазоне [2, 36]";
+        throw new RangeError("Система счисления должна быть в диапазоне [2, 36]");
     }
 
     let decimalNumber;
     
-    if (typeof num === 'string') {
-        decimalNumber = parseInt(num, fromBase);
-    } else {
-        decimalNumber = parseInt(String(num), fromBase);
-    }
+    // if (typeof num === 'string') {
+    //     decimalNumber = parseInt(num, fromBase);
+    // } else {
+    //     decimalNumber = parseInt(String(num), fromBase);
+    // }
 
-    //Посколько JS сам может преобразовать данные в строку, проверку на строку можно убрать и расскоментировать код ниже. Программа выдаст идентичные результаты
-    //decimalNumber = parseInt(num, fromBase);
+    // Посколько JS сам может преобразовать данные в строку, проверку на строку можно убрать и расскоментировать код ниже. 
+    // Программа выдаст идентичные результаты
+    decimalNumber = parseInt(num, fromBase);
 
     if (isNaN(decimalNumber)) {
-        return "Ошибка: неверное число";
+        throw new SyntaxError(`Недопустимый символ "${num}" для системы счисления ${fromBase}`);
     }
         
     let result = decimalNumber.toString(toBase);
@@ -24,13 +34,22 @@ function convertBase(num, fromBase, toBase) {
     return result;
 }
 
-console.log('Тест 1 (10: 10 -> 2):', convertBase(10, 10, 2));
-console.log('Тест 2 (255: 10 -> 16):', convertBase(255, 10, 16));
-console.log('Тест 3 (FF: 16 -> 10):', convertBase('FF', 16, 10));
-console.log('Тест 4 (1010: 2 -> 10):', convertBase('1010', 2, 10));
-console.log('Тест 5 (777: 8 -> 10):', convertBase('777', 8, 10));
-console.log('Тест 6 (A3: 16 -> 2):', convertBase('A3', 16, 2));
+const tests = [
+    { name: 'Тест 1 (10: 10 -> 2)', fn: () => convertBase(10, 'F', 2) },
+    { name: 'Тест 2 (255: 10 -> 16)', fn: () => convertBase(255, 10, 16) },
+    { name: 'Тест 3 (FF: 16 -> 8)', fn: () => convertBase('FF', 16, 8) },
+    { name: 'Тест 4 (1010: 2 -> 5)', fn: () => convertBase('1010', 2, 5) },
+    { name: 'Тест 5 (777: 8 -> 10)', fn: () => convertBase('777', 8, 10) },
+    { name: 'Тест 6 (A3: 16 -> 2)', fn: () => convertBase('A3', 16, 2) },
+    { name: 'Тест 7 (Z: 35 -> 10)', fn: () => convertBase('Z', 35, 10) },
+    { name: 'Тест 8 (Z: 37 -> 10)', fn: () => convertBase('Z', 37, 10) },
+];
 
-//тесты с ошибкой
-console.log('Тест 7 (Z: 35 -> 10):', convertBase('Z', 35, 10));
-console.log('Тест 8 (Z: 37 -> 10):', convertBase('Z', 37, 10));
+for (const test of tests) {
+    try {
+        const result = test.fn();
+        console.log(`${test.name}:`, result);
+    } catch (error) {
+        console.log(`${test.name} упал.`, error.message);
+    }
+}
