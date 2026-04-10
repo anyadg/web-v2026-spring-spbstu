@@ -149,7 +149,8 @@ function Editor({
     };
 
     const saveEvent = async ()=>{
-        let e = currentEvent ?? new Event(Event.max_id + 1, '', [], '');
+        const id = crypto.randomUUID();
+        let e = currentEvent ?? new Event(id, '', [], '');
         e.title = eventTitle;
         e.location = eventLocation;
         e.organizers = organizers;
