@@ -1,13 +1,10 @@
 "use strict";
 class Event {
-    static max_id = 0;
     constructor(id, title, organizers, location) {
         this.id = id;
         this.title = title;
         this.organizers = organizers;
         this.location = location;
-
-        Event.max_id = Math.max(Event.max_id, this.id);
     }
     addOrganizer(name) {
         this.organizers.push(name);
@@ -22,16 +19,16 @@ class Event {
     }
 }
 const events = [
-    new Event(1, "Tech Conference 2026", ["Alice Johnson", "Bob Smith"], "Convention Center"),
-    new Event(2, "Music Festival", ["Carol Davis"], "Central Park"),
-    new Event(3, "Startup Meetup", ["David Lee"], "Innovation Hub"),
-    new Event(4, "Art Exhibition", ["Emma Wilson", "Frank Brown", "Grace Taylor"], "Art Gallery"),
-    new Event(5, "Charity Run", ["Henry Adams"], "City Stadium"),
-    new Event(6, "Workshop: React Basics", ["Isabel Chen", "Jack Robinson"], "Tech Space"),
-    new Event(7, "Book Club Meeting", ["Karen White"], "Public Library"),
-    new Event(8, "Food Festival", ["Liam Martinez", "Mia Garcia"], "Downtown Square"),
-    new Event(9, "Career Fair", ["Noah Anderson"], "University Campus"),
-    new Event(10, "Yoga Session", ["Olivia Thomas"], "Wellness Center")
+    new Event(crypto.randomUUID(), "Tech Conference 2026", ["Alice Johnson", "Bob Smith"], "Convention Center"),
+    new Event(crypto.randomUUID(), "Music Festival", ["Carol Davis"], "Central Park"),
+    new Event(crypto.randomUUID(), "Startup Meetup", ["David Lee"], "Innovation Hub"),
+    new Event(crypto.randomUUID(), "Art Exhibition", ["Emma Wilson", "Frank Brown", "Grace Taylor"], "Art Gallery"),
+    new Event(crypto.randomUUID(), "Charity Run", ["Henry Adams"], "City Stadium"),
+    new Event(crypto.randomUUID(), "Workshop: React Basics", ["Isabel Chen", "Jack Robinson"], "Tech Space"),
+    new Event(crypto.randomUUID(), "Book Club Meeting", ["Karen White"], "Public Library"),
+    new Event(crypto.randomUUID(), "Food Festival", ["Liam Martinez", "Mia Garcia"], "Downtown Square"),
+    new Event(crypto.randomUUID(), "Career Fair", ["Noah Anderson"], "University Campus"),
+    new Event(crypto.randomUUID(), "Yoga Session", ["Olivia Thomas"], "Wellness Center")
 ];
 function groupByLocation(events) {
     return events.reduce((groups, event) => {
