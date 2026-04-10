@@ -10,11 +10,7 @@ let porpularLocations = [
 ];
 
 let tabs = ['All Events','locations', 'organizers'];
-/**
- * built on already existing event objects
- * @param {} param0 
- * @returns 
- */
+
 function EventCard({event, setEventsList, setCurrentEventId, setEditMode}){
     const editEvent = function(){
         setCurrentEventId(event.id);
@@ -145,12 +141,10 @@ function Editor({
     const [eventLocation, setEventLocation] = useState(currentEvent ? currentEvent.location : "");
 
     const addOrganizer = async (name)=>{
-        //currentEvent.addOrganizer(name);
         setOrganizers([...organizers, name]);
     }
 
     const removeOrganizer = async (name) => {
-        //currentEvent.removeOrganizer(name);
         setOrganizers(organizers.filter(org => org !== name));
     };
 
@@ -218,7 +212,6 @@ function Editor({
                                         <li key={"preview-org-"+i} className="organizer-item">
                                             <span className="organizer-name">{org}</span>
                                             <div className="organizer-item-actions">
-                                                {/* <button type="button" className="edit-btn warn"><i className="fa-solid fa-pencil"></i></button> */}
                                                 <button type="button" className="delete-btn danger" onClick={()=>{ removeOrganizer(org)}}><i className="fa-solid fa-trash"></i></button>
                                             </div>
                                         </li>
