@@ -24,8 +24,8 @@ function test3() {
     let result = findPairsWithSum([1, 2, 3, 4, 5], 6);
     printPairs(result);
 
-    console.log("4 1 9 3 5 1 8 -- 9");
-    result = findPairsWithSum([4, 1, 9, 3, 5, 1, 8], 9);
+    console.log("4 1 9 3 5 1 8 10 -1 -- 9");
+    result = findPairsWithSum([4, 1, 9, 3, 5, 1, 8, 10, -1], 9);
     printPairs(result);
 
     console.log("2 7 11 15 -- 9");
